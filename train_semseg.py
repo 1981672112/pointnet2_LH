@@ -39,7 +39,7 @@ def inplace_relu(m):
 
 def parse_args():
     parser = argparse.ArgumentParser('Model')
-    parser.add_argument('--model', type=str, default='csa_for_seg', help='model name [default: pointnet_sem_seg]')
+    parser.add_argument('--model', type=str, default='pointnet_sem_seg', help='model name [default: pointnet_sem_seg]')
     parser.add_argument('--batch_size', type=int, default=16, help='Batch Size during training [default: 16]')
     parser.add_argument('--epoch', default=32, type=int, help='Epoch to run [default: 32]')
     parser.add_argument('--learning_rate', default=0.001, type=float, help='Initial learning rate [default: 0.001]')
@@ -91,7 +91,8 @@ def main(args):
     log_string('PARAMETER ...')
     log_string(args)
 
-    root = 'data/stanford_indoor3d/'
+    # root = 'data/stanford_indoor3d/'
+    root = '/home/lh/point_cloud/all_datasets/stanford_indoor3d'
     NUM_CLASSES = 13
     NUM_POINT = args.npoint
     BATCH_SIZE = args.batch_size
