@@ -1,0 +1,4 @@
+DEBUG:root:姓名 abc 年龄 13
+DEBUG:root:姓名 abc 年龄 13
+DEBUG:root:姓名 abc 年龄 13
+DEBUG:root:姓名 abc 年龄 13

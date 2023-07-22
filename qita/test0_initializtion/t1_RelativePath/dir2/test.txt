@@ -1,0 +1,31 @@
+import os, sys
+
+
+def get_cur_path1():
+    import os
+
+    return os.path.abspath(os.curdir)
+
+
+def get_cur_path2():
+    import sys
+    return sys.argv[0]
+
+
+def get_cur_path3():
+    import os
+    return os.path.dirname(__file__)
+
+
+a = get_cur_path1()
+b = get_cur_path2()
+c = get_cur_path3()
+print(a)
+print(b)
+print(c)
+
+
+# print('my os.getcwd =>', os.getcwd())  # show my cwd execution dir
+# print('my os.curdir =>', os.path.abspath(os.curdir))
+# # input('请输入：')  # wait for keypress if clicked
+# print(os.curdir)
