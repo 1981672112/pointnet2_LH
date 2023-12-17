@@ -32,13 +32,12 @@ sorted 语法：
 import os
 
 dir_point = '/home/lh/point_cloud/test1_pointnet2/' \
-            'Pointnet_Pointnet2_pytorch-master/data/shapenetcore_partanno_' \
-            'segmentation_benchmark_v0_normal/02691156'
+            'Pointnet_Pointnet2_pytorch-master/data'
 
 a = os.listdir(dir_point)
-# print(a,)
+print(a,)
 print(type(a), len(a))
 
-# b = sorted(a)
-# # print(b)
-# print(type(b), len(b))
+b = sorted(a)
+print(b)
+print(type(b), len(b))

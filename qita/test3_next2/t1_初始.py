@@ -80,3 +80,14 @@ print(hasattr(point1, 'y'))  # T
 print(hasattr(point1, 'z'))  # T
 print(hasattr(point1, 'name'))  # T 对象属性和类属性
 print(hasattr(point1, 'no'))  # F 没有该属性
+
+import sys
+import numpy as np
+
+print(sys.argv[1:])
+default = '==SUPPRESS=='
+# if default is not SUPPRESS:
+#     print('T')
+
+seed = np.random.randint(1, 5)
+print(seed)

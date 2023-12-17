@@ -25,3 +25,18 @@ t5 = os.path.splitext(path)
 t6 = os.path.splitdrive(path)
 # splitdrive():用于返回盘符和路径字符元组
 # ('', '/home/lh/point_cloud/test1_pointnet2/Pointnet_Pointnet2_pytorch-master/qita/test2/t1_json.py')
+
+# 示例路径
+path1 = r"C:\\Users\\Username\\Documents\\file.txt"
+path2 = "/home/username/documents/file.txt"
+
+# 在Windows系统中调用os.path.splitdrive()
+drive1, path1 = os.path.splitdrive(path1)
+print("Drive (Windows):", drive1)  # 输出：Drive (Windows): C:
+
+# 在其他系统中调用os.path.splitdrive()
+drive2, path2 = os.path.splitdrive(path2)
+print("Drive (Other):", drive2)  # 输出：Drive (Other):
+
+print("Path:", path1)  # 输出：Path: \\Users\\Username\\Documents\\file.txt
+print("Path:", path2)  # 输出：Path: /home/username/documents/file.txt

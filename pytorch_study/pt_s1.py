@@ -14,7 +14,9 @@ print(x)
 
 '''2 创建一个随机初始化矩阵'''
 x = torch.rand(5, 3)
-print(x)
+print('x', x)
+x1 = torch.randn(5, 3)
+print('x1', x1)
 
 '''3 构造一个填满 0 且数据类型为 long 的矩阵： '''
 x = torch.zeros(5, 3, dtype=torch.long)

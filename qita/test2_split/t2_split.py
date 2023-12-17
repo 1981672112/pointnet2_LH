@@ -22,5 +22,5 @@ import re
 
 a = 'Beautiful, is; better*than\nugly'
 # 四个分隔符为：,  ;  *  \n
-x = re.split(',|; |\*|\n', a)
+x = re.split(',|; |\*|\n', a)  # |是隔开符号
 print(x)  # ['Beautiful', ' is', 'better', 'than', 'ugly']

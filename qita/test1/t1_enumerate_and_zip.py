@@ -8,6 +8,7 @@ import numpy as np
 #
 # for i in list(arange(0, 5, 0.1)):
 #     print(i)
+
 """1 配合 
 from numpy import * 
 arange(0, 5, 0.1)
@@ -17,7 +18,7 @@ np.arange(0, 5, 0.1)
 range(0, 5,0.1) 步长不能为小数
 """
 
-# 2 numerate 和 zip
+# 2 enumerate 和 zip
 seg = ['1', '2', '3', '4']
 seg1 = ['4', '3', '2', '1']
 for i in enumerate(seg):
