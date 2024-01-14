@@ -2,6 +2,7 @@ import open3d as o3d
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 # 从txt文件中读取点云数据
 def read_point_cloud_from_txt(file_path):
     with open(file_path, 'r') as file:
@@ -11,6 +12,7 @@ def read_point_cloud_from_txt(file_path):
         x, y, z = map(float, line.strip().split())
         points.append([x, y, z])
     return np.array(points)
+
 
 # 读取点云数据
 point_cloud_data = read_point_cloud_from_txt("/home/lh/兔子/bunny.txt")

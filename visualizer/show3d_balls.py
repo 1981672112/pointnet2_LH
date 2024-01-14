@@ -218,7 +218,7 @@ if __name__ == '__main__':
     dataset = PartNormalDataset(root=root, npoints=2048, split='test', normal_channel=False)
     idx = np.random.randint(0, len(dataset))  # 991 <max=2874
     data = dataset[idx]
-    point_set, _, seg = data  # data 是一个元组（point_set,cls,seg）这三个元素都是ndarray类型 [2048 3][15][47 48]
+    point_set, _, seg = data  # data 是一个元组（point_set,cls.py,seg）这三个元素都是ndarray类型 [2048 3][15][47 48]
 
     choice = np.random.choice(point_set.shape[0], opt.npoints, replace=True)  # 是2048个点选2500点 可以重复
     point_set, seg = point_set[choice, :], seg[choice]

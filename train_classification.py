@@ -2,7 +2,7 @@
 Author: Benny
 Date: Nov 2019
 pointnet_cls
-跑新的分类模型加了RGB --use_normals', action='store_true', default=True,
+跑新的分类模型加了RGB/还是法向量 --use_normals', action='store_true', default=True,
 poinenet_cls没加RGB
 
 注意切换
@@ -49,8 +49,8 @@ def parse_args():
     parser.add_argument('--log_dir', type=str, default=None, help='experiment root')
     parser.add_argument('--decay_rate', type=float, default=1e-4, help='decay rate')
     parser.add_argument('--use_normals', action='store_true', default=False, help='use normals')
-    parser.add_argument('--process_data', action='store_true', default=False, help='save data offline')
-    parser.add_argument('--use_uniform_sample', action='store_true', default=False, help='use uniform sampiling')
+    parser.add_argument('--process_data', action='store_true', default=True, help='save data offline')  # 是否进行数据预处理 包括下面这个
+    parser.add_argument('--use_uniform_sample', action='store_true', default=False, help='use uniform sampiling')  # fps均匀采样1024点
     return parser.parse_args()
 
 
@@ -66,7 +66,6 @@ def test(model, loader, num_class=40):
     classifier = model.eval()
 
     for j, (points, target) in tqdm(enumerate(loader), total=len(loader)):
-
         if not args.use_cpu:
             points, target = points.cuda(), target.cuda()
 
@@ -98,16 +97,20 @@ def main(args):
     os.environ["CUDA_VISIBLE_DEVICES"] = args.gpu
 
     '''CREATE DIR'''
-    timestr = str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M'))
+    timestr = str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M'))  # 时间和日期
     exp_dir = Path('./log/')
-    exp_dir.mkdir(exist_ok=True)  # exist_ok= True: 目标目录存在时不报错
+    # exp_dir = Path('./logss') # 和上面是同样的效果
+    exp_dir.mkdir(exist_ok=True)  # exist_ok= True: 目标目录存在时不报错 log
+
     exp_dir = exp_dir.joinpath('classification')
-    exp_dir.mkdir(exist_ok=True)
+    exp_dir.mkdir(exist_ok=True)  # log/classification
+
     if args.log_dir is None:  # T
-        exp_dir = exp_dir.joinpath(timestr)
+        exp_dir = exp_dir.joinpath(timestr)  # log/classification/2024-01-11_21-07
     else:
         exp_dir = exp_dir.joinpath(args.log_dir)
     exp_dir.mkdir(exist_ok=True)  # log/classification/2023-05-10_22-17
+
     checkpoints_dir = exp_dir.joinpath('checkpoints/')  # log/classification/2023-05-10_22-17/checkpoints
     checkpoints_dir.mkdir(exist_ok=True)
     log_dir = exp_dir.joinpath('logs/')  # log/classification/2023-05-10_22-17/logs
@@ -136,7 +139,7 @@ def main(args):
     testDataLoader = torch.utils.data.DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=10)
 
     '''MODEL LOADING'''
-    num_class = args.num_category#40
+    num_class = args.num_category  # 40
     model = importlib.import_module(args.model)
     shutil.copy('./models/%s.py' % args.model, str(exp_dir))
     shutil.copy('models/pointnet2_utils.py', str(exp_dir))
@@ -246,4 +249,5 @@ def main(args):
 
 if __name__ == '__main__':
     args = parse_args()
+    # print(args.gpu,args.decay_rate)
     main(args)

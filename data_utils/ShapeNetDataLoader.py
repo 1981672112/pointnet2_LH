@@ -86,7 +86,7 @@ class PartNormalDataset(Dataset):
         # for cat in sorted(self.seg_classes.keys()):
         #     print(cat, self.seg_classes[cat])
 
-        self.cache = {}  # from index to (point_set, cls, seg) tuple 从索引到 (point_set, cls, seg) 元组
+        self.cache = {}  # from index to (point_set, cls.py, seg) tuple 从索引到 (point_set, cls.py, seg) 元组
         self.cache_size = 20000
 
     def __getitem__(self, index):
